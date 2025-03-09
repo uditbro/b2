@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<p><a class="navbar-brand" href="{% url 'blog:topic' topic.id %}">Topic: {{ topic }}</a></p>
+<p>Edit Thought: </p>
+
+<form action="{% url 'blog:edit_entry' entry.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <button class="navbar-brand" name="submit">Save Changes</button>
+</form>
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<p><a class="navbar-brand" href="{% url 'blog:topic' topic.id %}"> {{topic}} </a></p>
+
+<p>Add a new Thought: </p>
+<form action="{% url 'blog:new_entry' topic.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <button class="navbar-brand" name="submit">Add this thought!!</button>
+</form>
+{% endblock content %}

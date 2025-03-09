@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block page_header %}
+    <h1>Topics: </h1>
+{% endblock page_header %}
+
+{% block content %}
+    <ul class="list-group border-bottom pb-2 mb-4">
+        {% for topic in topics %}
+            <li class="list-group-item border-0"><a class="navbar-brand" href="{% url 'blog:topic' topic.id %}"> {{topic.topics}} </a></li>
+        {% empty %}
+            <li class="list-group-item border-0">Nothing has been added yet.</li>
+        {% endfor %}
+    </ul>
+    <a class="navbar-brand" href="{% url 'blog:new_topic' %}">Wanna Add a new Thought !</a>
+
+
+{% endblock content %}

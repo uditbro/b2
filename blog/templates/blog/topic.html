@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+
+{% block page_header %}
+
+<h1>Topic: {{topic.topics}}</h1>
+
+{% endblock page_header %}
+
+
+{% block content %}
+
+<p>Entries: </p>
+<p>
+    <a class="navbar-brand" href="{% url 'blog:new_entry' topic.id %}">Write about it!</a>
+</p>
+
+{% for entry in entries %}
+    <div class="card mb-3">
+        <h4 class="card-header">
+            {{entry.date_added  }}  
+            
+        </h4>
+
+        <div class="card-body">{{entry.entries | linebreaks }} </div>
+        <h5 class="card-header"><br/>
+            <small><a class="navbar-brand" href="{% url 'blog:edit_entry' entry.id %}">
+                Wanna change something about it!
+            </a></small></h5>
+    </div>
+{% empty %}
+    <p> -> There are no entries for this topic yet. Add something</p>
+{% endfor %}
+
+
+{% endblock content %}

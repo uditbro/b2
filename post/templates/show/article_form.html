@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+
+{% block page_header %}
+    <h1>Topics: </h1>
+{% endblock page_header %}
+
+
+{% block content %}
+    <h1>Write an Article you want to make public.</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    <p><a href="https://safiertech.com/blogs.php">Click here to see you posted Article at Safiertech.com</a></p>
+    
+{% endblock content %}
